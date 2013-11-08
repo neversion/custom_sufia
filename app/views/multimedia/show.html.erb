@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+
+<% (@multimedium.terms_for_display - [:resource_type]).each do |term| %>
+    <%= render_show_field_partial(term, generic_file: @multimedium) %>
+<% end %>
+
+<%= link_to 'Edit', edit_multimedium_path(@multimedium) %> |
+<%= link_to 'Back', multimedia_path %>

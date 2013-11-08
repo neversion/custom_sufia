@@ -1,4 +1,6 @@
 SufiaTest::Application.routes.draw do
+  resources :multimedia
+
   root :to => "catalog#index"
   Blacklight.add_routes(self)
   HydraHead.add_routes(self)

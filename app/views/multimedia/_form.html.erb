@@ -1,0 +1,18 @@
+<%= form_for(@multimedium) do |f| %>
+  <% if @multimedium.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@multimedium.errors.count, "error") %> prohibited this multimedium from being saved:</h2>
+
+      <ul>
+      <% @multimedium.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.text_field :title  %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
