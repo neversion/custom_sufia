@@ -1,6 +1,18 @@
-<h1>Editing multimedium</h1>
+<%= render :partial => 'breadcrumbs' %>
 
-<%= render 'form' %>
+<h1 class="lower">Edit <%= @multimedium %></h1>
+
+<div class="row">
+  <div class="span2">&nbsp;</div>
+  <div class="span68">
+    <div class="tab-content">
+      <%= render :partial => "descriptions", :locals => { :generic_file => @multimedium } %>
+    </div>
+  </div> <!-- /.span68-->
+</div><!-- /.row -->
+
+
+<h1>Editing multimedium</h1>
 
 <%= link_to 'Show', @multimedium %> |
 <%= link_to 'Back', multimedia_path %>

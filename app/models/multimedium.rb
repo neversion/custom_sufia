@@ -17,4 +17,13 @@ class Multimedium < ActiveFedora::Base
   delegate :the_time, to: 'customMetadata'
   delegate :data_stamp, to: 'customMetadata'
 
+  def terms_for_editing
+    terms_for_display -
+        [:part_of, :date_modified, :date_uploaded, :format] #, :resource_type]
+  end
+
+  #override generic_file的同名函数
+  def terms_for_display
+    self.descMetadata.class.fields + self.customMetadata.class.fields
+  end
 end
