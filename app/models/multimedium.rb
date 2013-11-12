@@ -19,11 +19,12 @@ class Multimedium < ActiveFedora::Base
 
   def terms_for_editing
     terms_for_display -
-        [:part_of, :date_modified, :date_uploaded, :format] #, :resource_type]
+        [:resource_type, :part_of, :date_modified, :date_uploaded, :format] #, :resource_type]
   end
 
   #override generic_file的同名函数
   def terms_for_display
-    self.descMetadata.class.fields + self.customMetadata.class.fields
+    self.descMetadata.class.fields + [:subtitle,:keyword,:set_number,:call_number,:class1,:class2,:format_number,
+      :media_format,:becount,:publish_date,:app_format,:cover_pic,:the_time,:data_stamp]
   end
 end

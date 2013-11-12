@@ -1,3 +1,5 @@
+<% multimedium = @multimedium unless multimedium  %>
+
 <%= form_for(@multimedium) do |f| %>
   <% if @multimedium.errors.any? %>
     <div id="error_explanation">
@@ -10,9 +12,18 @@
       </ul>
     </div>
   <% end %>
-  <%= f.text_field :title  %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <h2 class="non lower">Descriptions <small class="pull-right"><span class="error">*</span> indicates required fields</small> </h2>
+    <div class="well">
+
+      <% (multimedium.terms_for_editing).each do |term| %>
+          <%= render :partial => "multimedia/field_form", :locals => { multimedium: multimedium, f: f, render_req: true, key: term } %>
+      <% end %>
+
+    </div><!-- /well -->
+    <div class="row">
+      <div class="form-actions">
+        <%= f.button '<i class="icon-save"></i> Save Descriptions'.html_safe, :type => 'submit', :class => 'btn-primary', :onclick => "confirmation_needed = false;", :id => "upload_submit", :name => "update_descriptions" %>
+      </div>
+    </div>
 <% end %>

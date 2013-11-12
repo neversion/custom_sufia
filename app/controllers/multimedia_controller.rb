@@ -1,4 +1,5 @@
-class MultimediaController < ApplicationController
+class MultimediaController < GenericFilesController
+#class MultimediaController < ApplicationController
   before_action :set_multimedium, only: [:show, :edit, :update, :destroy]
 
   # GET /multimedia
@@ -20,16 +21,18 @@ class MultimediaController < ApplicationController
 
   # GET /multimedia/1/edit
   def edit
+    binding.pry
+    @multimedium.initialize_fields
+    @groups = current_user.groups
   end
 
   # POST /multimedia
   # POST /multimedia.json
   def create
     @multimedium = Multimedium.new(multimedium_params)
-
     respond_to do |format|
       binding.pry
-      if @multimedium.save
+      if create_metadata(@multimedium)
         format.html { redirect_to @multimedium, notice: 'Multimedium was successfully created.' }
         format.json { render action: 'show', status: :created, location: @multimedium }
       else

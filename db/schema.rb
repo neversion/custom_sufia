@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131106031707) do
+ActiveRecord::Schema.define(version: 20131112103616) do
 
   create_table "bookmarks", force: true do |t|
     t.integer  "user_id",     null: false
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 20131106031707) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "user_type"
+  end
+
+  create_table "books", force: true do |t|
+    t.string   "title"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "checksum_audit_logs", force: true do |t|

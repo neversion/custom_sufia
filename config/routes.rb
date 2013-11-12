@@ -1,4 +1,6 @@
 SufiaTest::Application.routes.draw do
+  resources :books
+
   resources :multimedia
 
   root :to => "catalog#index"
