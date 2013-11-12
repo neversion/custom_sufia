@@ -1,7 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<% (@multimedium.terms_for_display - [:resource_type]).each do |term| %>
-    <%= render_show_field_partial(term, generic_file: @multimedium) %>
+<% (@multimedium.terms_for_display - [:part_of,:resource_type]).each do |term| %>
+
+    <p><%= "#{term}: " %>
+    <% @multimedium[term].each do |item| %>
+        <%= item %>
+    <% end %>
+    </p>
+
 <% end %>
 
 <%= link_to 'Edit', edit_multimedium_path(@multimedium) %> |
