@@ -21,7 +21,6 @@ class MultimediaController < GenericFilesController
 
   # GET /multimedia/1/edit
   def edit
-    binding.pry
     @multimedium.initialize_fields
     @groups = current_user.groups
   end
@@ -31,7 +30,6 @@ class MultimediaController < GenericFilesController
   def create
     @multimedium = Multimedium.new(multimedium_params)
     respond_to do |format|
-      binding.pry
       if create_metadata(@multimedium)
         format.html { redirect_to @multimedium, notice: 'Multimedium was successfully created.' }
         format.json { render action: 'show', status: :created, location: @multimedium }

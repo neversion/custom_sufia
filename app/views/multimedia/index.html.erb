@@ -3,15 +3,18 @@
 <table>
   <thead>
     <tr>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Title</th>
+      <th>creator</th>
+      <th>description</th>
     </tr>
   </thead>
 
   <tbody>
     <% @multimedia.each do |multimedium| %>
       <tr>
+        <td><%= multimedium.title[0] if multimedium.title.length<=1  %></td>
+        <td><%= multimedium.creator[0] if multimedium.creator.length<=1%></td>
+        <td><%= multimedium.description[0] if multimedium.description.length<=1%></td>
         <td><%= link_to 'Show', multimedium %></td>
         <td><%= link_to 'Edit', edit_multimedium_path(multimedium) %></td>
         <td><%= link_to 'Destroy', multimedium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
